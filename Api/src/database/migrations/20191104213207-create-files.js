@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 module.exports = {
   up: (queryInterface, Sequelize) =>
-    queryInterface.createTable('users', {
+    queryInterface.createTable('files', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -12,18 +12,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
+      path: {
         type: Sequelize.STRING,
         allowNull: false,
-      },
-      password_hash: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      provider: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-        allowNull: false,
+        unique: true,
       },
       created_at: {
         type: Sequelize.DATE,
@@ -35,5 +27,5 @@ module.exports = {
       },
     }),
 
-  down: queryInterface => queryInterface.dropTable('users'),
+  down: queryInterface => queryInterface.dropTable('files'),
 };
